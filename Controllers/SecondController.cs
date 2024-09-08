@@ -19,11 +19,17 @@ public class SecondController : ControllerBase
     {
         return _secondService.DoSomething();
     }
-    
+
     [HttpGet("do-something-and-call-dependent-service")]
     public string DoSomethingAndCallDependentService()
     {
         return _secondService.DoSomethingAndCallDependentService();
     }
-    
+
+    [HttpGet("do-something-and-call-dependent-service-instance-check")]
+    public string DoSomethingAndCallDependentServiceCheck()
+    {
+        return
+            $"First call: {_secondService.DoSomethingAndCallDependentService()} \nSecond call: {_secondService.DoSomethingAndCallDependentService()}";
+    }
 }
